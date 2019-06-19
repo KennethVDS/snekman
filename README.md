@@ -1,84 +1,152 @@
 # snekman
 
-One Paragraph of project description goes here
+A small game where the goal is to eat as much as you can.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+![](screenshot.png)
+
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+@github link .
 
-```
-Give examples
-```
 
-### Installing
+## How To
 
-A step by step series of examples that tell you how to get a development env running
+When you open the page the Snekman will automatically start moving.
+The other red dot is the food our dot wants to eat.
+You 
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
+### App Code
 
 Explain what these tests test and why
 
+```JS
+(function setup() {
+    snek = new Snek();
+    eten = new fruit();
+    eten.pickLocation();
+
+    window.setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        eten.draw();
+        snek.update();
+        snek.draw();
+
+        if (snek.eat(eten)) {
+            eten.pickLocation();
+        }
+    }, 100);
+}());
 ```
-Give an example
+```JS
+window.addEventListener('keydown', ((evt) => {
+    const direction = evt.key.replace('Arrow', '');
+    snek.changeDirection(direction);
+}))
 ```
 
-### And coding style tests
+### Snek Code
 
 Explain what these tests test and why
 
+```JS
+function Snek() 
+    this.x = 0;
+    this.y = 0;
+    this.xSpeed = scale * 1;
+    this.ySpeed = 0;
 ```
-Give an example
+```JS
+this.draw = function() {
+        ctx.fillStyle = "#ff5050";
+        ctx.fillRect(this.x, this.y, scale * 2, scale * 2);
+    }
 ```
+```JS
+this.update = function() {
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        if (this.x > canvas.width) {
+            this.x = 0;
+        }
+        if (this.y > canvas.height) {
+            this.y = 0;
+        }
+        if (this.x < 0) {
+            this.x = canvas.width;
+        }
+        if (this.y < 0) {
+            this.y = canvas.height;
+        }
+    }
+```
+```JS
+this.changeDirection = function(direction) {
+        switch(direction) {
+            case 'Up':
+                this.xSpeed = 0;
+                this.ySpeed = -scale * 1;
+                break;
+            case 'Down':
+                this.xSpeed = 0;
+                this.ySpeed = scale * 1;
+                break;
+            case 'Left':
+                this.xSpeed = -scale * 1;
+                this.ySpeed = 0;
+                break;
+            case 'Right':
+                this.xSpeed = scale * 1;
+                this.ySpeed = 0;
+                break;                                         
+        }
+    }
+```
+```JS
+this.eat = function(eten) {
+        if (this.x === eten.x && this.y === eten.y) {
+            return true;
+        }
+        return false;
+    }
+}
+```
+### Food Code
+
+Explain what these tests test and why
+
+```JS
+function fruit() {
+    this.x;
+    this.y;
+    this.pickLocation = function() {
+        this.x = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+        this.y = (Math.floor(Math.random() * columns - 1) + 1) * scale;
+    }
+    this.draw = function() {
+        ctx.fillStyle = "#ff3300";
+        ctx.fillRect(this.x, this.y, scale * 2, scale * 2)
+    }
+}
+```
+
 
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Loosely based on [Code With Kris](https://www.youtube.com/watch?v=21eSpMtJwrc&t=659s)
+ 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Kenneth Van Der Strieckt** - *Initial work* - [Snekman](https://github.com/KennethVDS/snekman)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
