@@ -3,15 +3,19 @@
     <head>
         <title>snekman</title>
         <meta charset="UTF-8">
-        <meta name="snekman" content="Pacman game">
+        <meta name="snekman" content="snekman game">
         <meta name="game, Pacman, Snake, becode" content="HTML,CSS,Javascript">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1>Snekman</h1>
-        <canvas class="canvas" height="300" width="300" style="background-color: aquamarine"></canvas>
+        <div class="infoboard">
+            <h1>Snekman</h1>
+            <span id="winst">score: </span>
+        </div>
+        <canvas class="canvas" height="444" width="444" style="border: 2px solid #FFFFFF"></canvas>
     </body>
+    <script type="text/javascript" src="score.js"></script>
     <script type="text/javascript" src="eten.js"></script>
     <script type="text/javascript" src="snek.js"></script>
     <script type="text/javascript" src="app.js"></script>

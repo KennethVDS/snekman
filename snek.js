@@ -4,11 +4,11 @@ function Snek() {
     this.xSpeed = scale * 1;
     this.ySpeed = 0;
 
-
     this.draw = function() {
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(this.x, this.y, scale, scale);
+        ctx.fillStyle = "#ff5050";
+        ctx.fillRect(this.x, this.y, bodySize, bodySize);
     }
+
     this.update = function() {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
@@ -25,6 +25,7 @@ function Snek() {
             this.y = canvas.height;
         }
     }
+
     this.changeDirection = function(direction) {
         switch(direction) {
             case 'Up':
@@ -44,5 +45,14 @@ function Snek() {
                 this.ySpeed = 0;
                 break;                                         
         }
+    }
+
+    this.eat = function(eten) {
+        if (this.x === eten.x && this.y === eten.y) {
+            score = score +1;
+            document.getElementById("winst").innerHTML = "score: " + score;
+            return true;
+        }
+        return false;
     }
 }
