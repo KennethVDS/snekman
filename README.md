@@ -16,7 +16,7 @@ A small game where the goal is to eat as much as you can.
 
 When you open the page the Snekman will automatically start moving.
 The other red dot is the food our dot wants to eat.
-You 
+You can use your arrows on the keyboard to control him and take it all!
 
 ### App Code
 
