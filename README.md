@@ -9,7 +9,7 @@ A small game where the goal is to eat as much as you can.
 
 ### Prerequisites
 
-@github link .
+https://kennethvds.github.io/snekman/
 
 
 ## How To
