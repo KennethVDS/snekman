@@ -40,6 +40,7 @@ Explain what these tests test and why
     }, 100);
 }());
 ```
+
 ```JS
 window.addEventListener('keydown', ((evt) => {
     const direction = evt.key.replace('Arrow', '');
@@ -47,9 +48,9 @@ window.addEventListener('keydown', ((evt) => {
 }))
 ```
 
-### Snek Code
+- On the window we put an eventListener for the keys, more defined the arrows wich will execute  by replacing and running the change direction function later explained.
 
-Explain what these tests test and why
+### Snek Code
 
 ```JS
 function Snek() 
@@ -58,12 +59,18 @@ function Snek()
     this.xSpeed = scale * 1;
     this.ySpeed = 0;
 ```
+
+- First we define a few variables like the x and y position where we want our snake to appear. We also define the speed of our movement wich in this case just means a + 1 every time.
+
 ```JS
 this.draw = function() {
         ctx.fillStyle = "#ff5050";
         ctx.fillRect(this.x, this.y, scale * 2, scale * 2);
     }
 ```
+
+- This standard draw function will create a square that is double the size of the scale.
+
 ```JS
 this.update = function() {
         this.x += this.xSpeed;
@@ -82,6 +89,9 @@ this.update = function() {
         }
     }
 ```
+
+- When the function update is called it will execute an acceleration that is the posisition of x + 1 (xSpeed). When the border is reached on all sides it will start again on the other side of the canvas.
+
 ```JS
 this.changeDirection = function(direction) {
         switch(direction) {
@@ -104,6 +114,9 @@ this.changeDirection = function(direction) {
         }
     }
 ```
+
+- When you hit the Arrow keys this code will execute by taking the direction of the arrow and letting the snek follow that route at the same pace.
+
 ```JS
 this.eat = function(eten) {
         if (this.x === eten.x && this.y === eten.y) {
@@ -113,9 +126,9 @@ this.eat = function(eten) {
     }
 }
 ```
-### Food Code
+- The eat (aka eten) function will be called when both the x and y values are the same from as well the snek and the food. If so it returns True, if not false.
 
-Explain what these tests test and why
+### Food Code
 
 ```JS
 function fruit() {
@@ -131,11 +144,11 @@ function fruit() {
     }
 }
 ```
-
+- This function will take the x and y points exactly like the snake but on that we put a function pickLocation that will create a random number on the columns (y) and the rows (x) and draw a rectangle that is double the size of the scale on that location inside the canvas.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+This should work on any kind of browser.
 
 
 ## Contributing
@@ -150,6 +163,6 @@ Loosely based on [Code With Kris](https://www.youtube.com/watch?v=21eSpMtJwrc&t=
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
+* Google
+* The boys
 * etc
